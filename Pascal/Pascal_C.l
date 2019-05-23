@@ -48,7 +48,7 @@ int main(){
  printf("\n <html>");
  printf("\n   <head>");
  printf("\n     <title>Sample page</title>");
- printf("\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"ejemplo.css\">");
+ printf("\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"hoja.css\">");
  printf("\n   </head>");
  printf("\n   <body>");
 	yylex();
