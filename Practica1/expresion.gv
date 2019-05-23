@@ -1,0 +1,6 @@
+digraph AFD{
+	node [shape=circle];
+	rankdir=LR;
+	Z [style=invis];
+	Z -> A [label="inicial"];
+}
