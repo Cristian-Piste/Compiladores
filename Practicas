@@ -1,8 +1,6 @@
 1) expresion regular y entrega un AFN (thompson)
 2) expresion regular y entrega un AFD (arbol)
 
-
-
 ###COMPILAR ARCHIVOS .gv
 	$ dot -Tpng archivo.gv > archivo.png
 		->archivo.png
