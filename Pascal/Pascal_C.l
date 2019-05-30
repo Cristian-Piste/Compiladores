@@ -1,47 +1,44 @@
-D			[0-9]
-L			[a-zA-Z_]
-H			[a-fA-F0-9]
-E			[Ee][+-]?{D}+
-FS			(f|F|l|L)
-IS			(u|U|l|L)*
-RESERVADAS              break|using|namespace|case|const|continue|default|do|else|extern|for|goto|if|return|register|sizeof|static|switch
-TIPOS                   auto|char|double|enum|float|int|long|short|signed|struct|typedef|union|unsigned|void
-OPERADORES              <|>|&&|%|==|"="|"+"|"-"|"/"|"||"|<=|>=|"++"|"--"
-SIMBOLOS                "("|")"|"{"|"}"|";"|","
+DIGITO                     	[0-9]
+KEYWORDS        			auto|break|case|const|continue|default|do|else|enum|extern|for|goto|if|register|return|signed|sizeof|static|typedef|union|while|using|namespace|vector
+TIPOSDATO                  	char|int|long|short|float|double|void|unsigned|uint32_t|size_t
+DIRECTIVAS                 	"#"[a-zA-Z]+
+LIBS                       	"<"[a-z]+("."[a-zA-Z]+|"")">"
+OPERADORES_ARITMETICOS     	("+"|"-"|"*"|"/"|"%")|"="|("+"|"-"|"*"|"/"|"%")"="|"++"|"--"
+OPERADORES_COMPARACION     	<|>|>=|<=|"!="|==|"!"|&&|"||"
+OPERADORES_BIT             	>>|>>=|<<|<<=|"~"|"&"|"&="|"|"|"|="|"^"|"^="
+OPERADORES_OTROS           	":"|"::"|"?"|"\\"
+OPERADORES                 	{OPERADORES_ARITMETICOS}|{OPERADORES_COMPARACION}|{OPERADORES_BIT}|{OPERADORES_OTROS}
+SEPARADORES                	".("|")"|"{"|"}"|";"|","
+ID                         	([a-zA-Z]|"_")([a-zA-Z0-9]|"_")*
+ID_MAL                     	{DIGITO}+([a-zA-Z]|"_")([a-zA-Z0-9]|"_")*
+NUMERICOS                  	{DIGITO}+"."{DIGITO}+|{DIGITO}+
+SECUENCIAS_ESCAPE          	"\\""\""|"\\""n"
+CARACTERES_ESPECIALES      	"."|" "|"'"|"#"|"?"|":"|"\\"|"@"
+CHARS                      	"'"({SECUENCIAS_ESCAPE}|[a-zA-Z0-9]|{CARACTERES_ESPECIALES}|{SEPARADORES}|{OPERADORES}|{ID}|{KEYWORDS}|{TIPOSDATO}|{LIBS}|{DIRECTIVAS}|{NUMERICOS})*"'"
+STRINGS                    	"\""({SECUENCIAS_ESCAPE}|[a-zA-Z0-9]|{CARACTERES_ESPECIALES}|{SEPARADORES}|{OPERADORES}|{ID}|{KEYWORDS}|{TIPOSDATO}|{LIBS}|{DIRECTIVAS}|{NUMERICOS})*"\""
+CADENAS                    	{STRINGS}|{CHARS}
+COMENTARIOS_UNALINEA    	"/""*"+([a-zA-Z0-9]|{CARACTERES_ESPECIALES}|{SEPARADORES}|{OPERADORES}|{ID}|{KEYWORDS}|{TIPOSDATO}|{CADENAS}|{LIBS}|{DIRECTIVAS}|{NUMERICOS}|{SECUENCIAS_ESCAPE})*"*"+"/"
+COMENTARIOS_CONTINUACION   	("/"|"")"*"([a-zA-Z0-9]|{CARACTERES_ESPECIALES}|{SEPARADORES}|{OPERADORES}|{ID}|{KEYWORDS}|{TIPOSDATO}|{CADENAS}|{LIBS}|{DIRECTIVAS}|{NUMERICOS}|{SECUENCIAS_ESCAPE})*
+COMENTARIOS                	{COMENTARIOS_UNALINEA}|{COMENTARIOS_CONTINUACION}
 
 %{
 #include<stdio.h>
 %}
 %%
 
-#include		{ printf("<p class = \"libreria\">%s</p>",yytext); }
-"/*"			{ printf("<p class = \"comentario\">%s</p>",yytext); }
-"*/"			{ printf("<p class = \"comentario\">%s</p>",yytext); }
-
-{TIPOS}			{ printf("<p class = \"tipodato\">%s</p>",yytext); }
-{RESERVADAS}            { printf("<p class = \"reservada\">%s</p>",yytext); }
-{OPERADORES}            { printf("<p class = \"operador\">%s</p>",yytext); }
-{SIMBOLOS}              { printf("<p class = \"simbolo\">%s</p>",yytext); }
-
-
-
-"main"			{ printf("<p class = \"main\">%s</p>",yytext); }
-{L}({L}|{D})*	        { printf("<p class = \"ids\">%s</p>",yytext);}
-0{D}+{IS}?		{ printf("<p class = \"numero\">%s</p>",yytext);}
-{D}+{IS}?		{ printf("<p class = \"numero\">%s</p>",yytext);}
-0[xX]{H}+{IS}?		{ printf("<p class = \"sinClass\">%s</p>",yytext);}
-{D}+{E}{FS}?		{ printf("<p class = \"sinClass\">%s</p>",yytext);}
-{D}*"."{D}+({E})?{FS}?	{ printf("<p class = \"sinClass\">%s</p>",yytext);}
-{D}+"."{D}*({E})?{FS}?	{ printf("<p class = \"sinClass\">%s</p>",yytext);}
-[\f]			{ printf("<p class = \"sinClass\">%s</p>",yytext);}
-L?'(\\.|[^\\'])+'	{ printf("<p class = \"constantechar\">%s</p>",yytext);}
-L?\"(\\.|[^\\"])*\"	{ printf("<p class = \"constantechar\">%s</p>",yytext);}
-[\t]			{ printf("<p class = \"tab\">Tab</p>");}
-[\v]			{ printf("<p class = \"tab\">TabV<br></p>");}
-[\n]			{ printf("<br/>");}
-"\\n"			{ printf("<p class = \"escape\">%s</p>",yytext);}
-" "			{ printf(" ");}
-.			{ printf("<p class = \"sinClass\">%s</p>",yytext);}
+{KEYWORDS}          		{ printf("<p class = \"KEYWORDS\">%s</p>",yytext); }
+{TIPOSDATO}         		{ printf("<p class = \"TIPOSDATO\">%s</p>",yytext); }
+{COMENTARIOS}       		{ printf("<p class = \"COMENTARIOS\">%s</p>",yytext); }
+{CADENAS}           		{ printf("<p class = \"CADENAS\">%s</p>",yytext); }
+{NUMERICOS}         		{ printf("<p class = \"NUMERICOS\">%s</p>",yytext); }
+{ID}                		{ printf("<p class = \"ID\">%s</p>",yytext); }
+{ID_MAL}            		{ printf("<p class = \"ID_MAL\">%s</p>",yytext); }
+{OPERADORES}        		{ printf("<p class = \"OPERADORES\">%s</p>",yytext); }
+{LIBS}              		{ printf("<p class = \"LIBS\">%s</p>",yytext); }
+{DIRECTIVAS}        		{ printf("<p class = \"DIRECTIVAS\">%s</p>",yytext); }
+[\n]                		{ printf("<br/>");}
+[\t]                		{ printf("<p class = \"tab\">Tab</p>");}
+[\v]                		{ printf("<p class = \"tab\">TabV<br></p>");}
 %%
 int main(){
  printf("\n <!DOCTYPE html>");
@@ -51,7 +48,7 @@ int main(){
  printf("\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"hoja.css\">");
  printf("\n   </head>");
  printf("\n   <body>");
-	yylex();
+    yylex();
  printf("\n   </body>");
  printf("\n </html>");
  return 0;
