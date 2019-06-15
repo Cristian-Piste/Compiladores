@@ -1,0 +1,88 @@
+PRIMERA PARTE
+
+1. Defina que es un compilador
+->Es un programa que puede leer un programa en un lenguaje y traducirlo en un programa equivalente en otro lenguaje.
+
+2. Cuales son las dos partes de un compilador
+->La parte de ANALISIS, y la parte de SINTESIS.
+
+3. Describa las 6 fases de un compilador
+->Analisis lexico, analisis sintactico, analisis semantico, generador de codigo intermetio, optimizador de codigo, generador de codigo objeto
+
+4. Cuales son los 8 modulos de un compilador
+->Preprocesador, Compilacion, Ensamblado, Enlazado
+
+5. Para que sirve el ANALISIS LEXICO
+>Lee el fllujo de caracteres que componen el programa fuente y los agrupa en secuencias significativas, conocidas como lexemas. Para cada lexema, el analizador produce una salida TOKEN de la forma: NOMBRE_TOKEN, VALOR_ATRIBUTO. DIVIDIR UNA CADENA EN TOKENS
+
+6. Es la fase final de un compilador
+->Generacion de codigo
+
+7. Es uno de los 8 modulos de un compilador
+->
+
+9. Cual es la gramatica que tiene los siguientes cuatro componentes
+    a)Conjunto de componentes lexicos
+    b)Conjunto de no terminales
+    c)Un conjunto de producciones, en el que cada produccion consta de un no terminal, llamado lado izquierdo de la produccion, una flecha y una secuencia de
+      componentes lexicos y no terminales, o ambos, llamado lado derecho de la produccion
+    d)La denominacion de uno de los no terminales como simbolo inicial
+->Gramatica libre de contexto
+
+10. Indica graficamente como el simbolo inicial de una gramatica deriva una cadena del lenguaje
+->Arbol de derivacion
+
+11. Es una gramatica donde existe una cadena (componentes lexicos) que pueden tener mas de una arbol de analisis sintactico
+->Gramatica ambigua
+
+
+SEGUNDA PARTE (F/V)
+
+(V)  1. Componente lexico es sinonimo de no terminal
+(F)  2. Tooken es sinonimo de no terminal
+(F)  3. Una gramatica no es ambigua si existe alguna cadena de terminales que pueda obtenerse mediante arboles de analisis sintactico distintos (dos arboles distintos dan la misma cadena)
+(V)  4. Dos gramaticas son equivalentes si generan el mismo lenguaje
+( )  5. Dos bloques basicos son equivalentes si calculan el mismo conjunto de expresiones
+( )  6. La eliminacion de subexpresiones comunes es una transformacion que preserva la estructura en bloques basicos
+(V)  7. En el analsis sintactico ascendente el arbol de analisis sintactico la construccion se inica en la raiz y avanza hacia las hojas
+(V)  8. En el analisis sintactico descendiente se coontruye el arbol de analisis sintactico de la cadena de desde las hojas y avanza hacia la raiz
+(F)  9. El arbol sintactico no es una version condensada del arbol de analisis sintactico
+( )  10. Un esquema de traduccion asocia a cada simbolo de una GLC un conjunto de atributos y a cada produccion, un conjunto de reglas semanticas para calcular los valores de los atributos asociados con los simbolos que aparecen en esa produccion
+(F)  11. Definicion dirigida por la sintaxis es una GLC en la que se encuentran intercalados, en los lados derechos de las producciones, fragmentos de programa llamados acciones semanticas
+()  12. Los valores de los atributos sintetizados se calculan a partir de los valores de atributos de su nodo padre o sus nodos hermanos
+(V)  13. Un atributo es heredado si su valor depende de los valores de los atributos de su padre y/o de sus hermanos
+( )  14. El codigo de tres direcciones consiste en una secuencia de instrucciones, cada una de las cuales tiene como maximo tres operandos
+
+EN EL LENGAJE c LOS PARAMETROS FORMALES NO TIENEN NOMBRE
+(V)  15. El lenguaje C los parametros formales son como variables locales que ya fueron inicializadas en el momento de la llamada a la funcion o procedimiento
+(V)  16. En el lenguaje C las variables locales (no estaticas) se crean cuando se entra a una funcion y se destruyen cuando se sale de la funcion
+(V)  17. En HOC los parametro usados dentro de la definicion de las funciones no tienen nombre
+(F)  18. No es posible definir funciones recursivas en HOC
+(V)  19. En HOC no hay variables locales
+(V)  20. En HOC cuando una funcion termina su ejecucion se saca su marco de la pila de llamadas
+(V)  21. En HOC los parametros reales son listas de expresiones
+(F)  22. En HOC el codigo que ejecuta la maquina virtual de pila esta en prefijo (considere como se ejecuta una operacion de suma)
+( )  23. En HOC el tipo de las variables es entero
+( )  24. En HOC el tipo de las variables es doble
+( V  25. En HOC los parametros reales se meten a la pila
+( )  26. Es imposible que la pila de allamadas de HOC se desborde (Stack Overflow)
+
+EXPRESIONES REGULARES
+1. Describa el lenguaje correspondiente a la expresion regular (0|1)*0
+->L={0, 00, 10, 000, 010, 100, 110, ...}
+
+ESCRIBA LAS EXPRESIONES REGULARES PARA CADA UNO DE LOS SIGUIENTES.
+2. Las cadenas sobre el alfabeto {a, b, c}, donde la primera "a" precede a la primera "b"
+->
+
+3. Las cadenas sobre el alfabeto {a, b, c}, con un numero par de a's
+->(a(b|c)*a(b|c)*)*
+
+4. Los numeros binarios que son multiplos de cuatro
+->(0|1)*00
+
+5. Los numeros binarios que son mayores que "101.001"
+->
+
+6. Las cadenas sobre el alfabeto {a, b, c} que no contienen la subcadena contigua "baa"
+->((a|c)*(c|b)*)|((b|c)*(c|a)*)
