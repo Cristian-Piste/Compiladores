@@ -1,4 +1,13 @@
+/*
+Piste Gomez Cristian Jovani
+3CV5
+Proyecto para ETS Ordinario de compiladores
+Interprete Mini-Logo
+17/06/2019
+Compiladores
+*/
 import java.awt.Color;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Stack;
@@ -34,7 +43,7 @@ public class Code {
             memoria.add(this.getClass().getDeclaredMethod(nombre, null));
             return posicion;
         }
-        catch(Exception e ){
+        catch(NoSuchMethodException | SecurityException e ){
             System.out.println("Error al agregar operación " + nombre + ". ");
         }
         return -1;
@@ -55,7 +64,7 @@ public class Code {
         try{
             memoria.add(posicion, this.getClass().getDeclaredMethod(nombre, null));
         }
-        catch(Exception e ){
+        catch(NoSuchMethodException | SecurityException e ){
             System.out.println("Error al agregar operación " + nombre + ". ");
         }
         return posicion;
@@ -341,7 +350,7 @@ public class Code {
             }
             contadorDePrograma++;
         }
-        catch(Exception e){}
+        catch(IllegalAccessException | IllegalArgumentException | InvocationTargetException e){}
     }
     
     public CurrentState getCurrentState(){

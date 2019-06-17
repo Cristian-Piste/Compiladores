@@ -1,3 +1,11 @@
+/*
+Piste Gomez Cristian Jovani
+3CV5
+Proyecto para ETS Ordinario de compiladores
+Interprete Mini-Logo
+17/06/2019
+Compiladores
+*/
 //### This file created by BYACC 1.8(/Java extension  1.15)
 //### Java capabilities added 7 Jan 97, Bob Jamison
 //### Updated : 27 Nov 97  -- Bob Jamison, Joe Nieten
@@ -17,7 +25,6 @@
 
 
 //#line 2 "logoyacc.y"
-	import java.lang.Math;
 	import java.io.*;
 	import java.util.StringTokenizer;
 //#line 21 "Parser.java"

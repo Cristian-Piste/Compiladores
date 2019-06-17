@@ -1,14 +1,16 @@
-
-
-
-
-import java.awt.Color;
+/*
+Piste Gomez Cristian Jovani
+3CV5
+Proyecto para ETS Ordinario de compiladores
+Interprete Mini-Logo
+17/06/2019
+Compiladores
+*/
 import java.awt.Graphics;
-import java.awt.Polygon;
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
-import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
@@ -33,7 +35,7 @@ public class JPanelDibujo extends JPanel{
             int x0 = 300 + lineas.get(i).getX0();
             int y0 = 300 - lineas.get(i).getY0();
             int x1 = 300 + lineas.get(i).getX1();
-            int y1 = 300 - lineas.get(i).getY1();;
+            int y1 = 300 - lineas.get(i).getY1();
             g.setColor(lineas.get(i).getColor());
             g.drawLine(x0, y0, x1, y1);
         }
@@ -41,7 +43,7 @@ public class JPanelDibujo extends JPanel{
         BufferedImage img = null;
         try {
             img = ImageIO.read(getClass().getResourceAsStream("tuga.png"));
-        } catch (Exception e){
+        } catch (IOException e){
             System.out.println(e);
         }
         

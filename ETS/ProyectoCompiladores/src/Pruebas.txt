@@ -235,31 +235,25 @@ estrella();
 //FRACTAL DE KOCH
 
 procedure cuadrado(){
-	COLOR[0, 0, 255];
-   	if($1<0){
-		AVANZA[$2];
-	}
-	else{
-		
-		cuadrado($1-1,$2*0.33333333);
-	
-  GIRA[60];
-		cuadrado($1-1,$2*0.33333333);
-	
-  GIRA[-60];
-	
-  GIRA[-60];
-		cuadrado($1-1,$2*0.33333333);
-	
-  GIRA[60];
-		cuadrado($1-1,$2*0.33333333);
-	}
+    COLOR[0, 0, 255];
+    if($1<0){
+        AVANZA[$2];
+    }
+    else{
+        cuadrado($1-1,$2*0.33333333);
+        GIRA[60];
+	cuadrado($1-1,$2*0.33333333);
+        GIRA[-60];
+        GIRA[-60];
+        cuadrado($1-1,$2*0.33333333);
+        GIRA[60];
+        cuadrado($1-1,$2*0.33333333);
+    }
 }
-procedure cuadrados(){ 
-	AVANZA[-280];  
-	cuadrado($1,500);
+procedure cuadrados(){
+    AVANZA[-280];  
+    cuadrado($1,500);
 }
-
 cuadrados(3);
 
 

@@ -1,3 +1,11 @@
+/*
+Piste Gomez Cristian Jovani
+3CV5
+Proyecto para ETS Ordinario de compiladores
+Interprete Mini-Logo
+17/06/2019
+Compiladores
+*/
 public class SymbolData {
 
     private String nombre;

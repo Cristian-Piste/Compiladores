@@ -1,20 +1,19 @@
-
-
-
-
+/*
+Piste Gomez Cristian Jovani
+3CV5
+Proyecto para ETS Ordinario de compiladores
+Interprete Mini-Logo
+17/06/2019
+Compiladores
+*/
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.ScrollPaneConstants;
 
 public class GUI extends JFrame {
     Parser parser;
@@ -41,9 +40,9 @@ public class GUI extends JFrame {
         
         //Codigo
         codeArea = new JTextArea(20,20);
-        codeArea.setBackground(Color.BLACK);
+        codeArea.setBackground(Color.WHITE);
         codeArea.setFont(new Font("Arial", Font.PLAIN, 14));
-        codeArea.setForeground(Color.WHITE);
+        codeArea.setForeground(Color.BLACK);
         codeArea.setLineWrap(true);
         codeArea.setWrapStyleWord(true);
         codeArea.setTabSize(4);

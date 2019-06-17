@@ -1,4 +1,13 @@
+/*
+Piste Gomez Cristian Jovani
+3CV5
+Proyecto para ETS Ordinario de compiladores
+Interprete Mini-Logo
+17/06/2019
+Compiladores
+*/
 %{
+
 	import java.lang.Math;
 	import java.io.*;
 	import java.util.StringTokenizer;
@@ -163,7 +172,7 @@
 	null: {machine.agregar(null);}
 		;
 		
-	stop: {$$ = new ParserVal(machine.agregarOperacion("stop"));} 
+	stop: {$$ = new ParserVal(machine.agregarOperacion("stop"));}
 		;
 
 	if: IF {
@@ -187,7 +196,7 @@
 	        machine.agregarOperacion("stop");//instrucción final
 	        machine.agregarOperacion("stop");//cuerpo
 	        machine.agregarOperacion("stop");//final
-		}		
+		}
 
 	instrucciones: { $$ = new ParserVal(machine.agregarOperacion("nop"));}
 		|exp {$$ = $1;}
@@ -396,4 +405,3 @@ public static void main(String args[]) throws Exception{
 	Parser par = new Parser(false);
 	par.dotest();
 }
-
