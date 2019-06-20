@@ -114,8 +114,8 @@ Compiladores
 		
 		| PARAMETRO { $$ = new ParserVal(machine.agregarOperacion("push_parametro")); machine.agregar((int)$1.ival); }
 		
-		|nombreProc '(' arglist ')' { $$ = new ParserVal(machine.agregarOperacionEn("invocar",($1.ival))); machine.agregar(null); } //instrucciones tiene la estructura necesaria para la lista de argumentos
-		;//Lamada a Procedimiento
+		|nombreProc '(' arglist ')' { $$ = new ParserVal(machine.agregarOperacionEn("invocar",($1.ival))); machine.agregar(null); } 
+		;
 		
 	arglist: 
 		|exp {$$ = $1; machine.agregar("Limite");}
@@ -157,9 +157,8 @@ Compiladores
 		}
 		;
 	instruccion: FNCT {
-			$$ = new ParserVal(machine.agregar((Funcion)($1.obj)));//Llamada a funcion 
-		}
-		;
+			$$ = new ParserVal(machine.agregar((Funcion)($1.obj)));//Llamada a funcion
+		};
 
 	procedimiento: PROC { machine.agregarOperacion("declaracion"); }
 		;
@@ -226,15 +225,15 @@ int yylex(){
 	if (!st.hasMoreTokens()){
 		if (!newline){
 			newline=true;
-			return '\n'; //So we look like classic YACC example
+			return '\n'; 
 		}
 		else
 			return 0;
 	}
 	s = st.nextToken();
 	try{
-		d = Double.valueOf(s);/*this may fail*/
-		yylval = new ParserVal(d.doubleValue()); //SEE BELOW
+		d = Double.valueOf(s);
+		yylval = new ParserVal(d.doubleValue()); 
 		return NUMBER;
 	}
 	catch (Exception e){}
@@ -367,7 +366,6 @@ void dotest() throws Exception{
 		catch (Exception e){}
 		st = new StringTokenizer(ins);
 		newline=false;
-		//machine = new Code(sym);
 		yyparse();
 		if(!huboError)
 			machine.ejecutar();
